@@ -7,8 +7,8 @@ import { Config } from "aurelia-api";
 export class RestService {
 
   constructor(HttpClient, EventAggregator, config, api) {
-    this.endpoint = config.getEndpoint(api);
-
+    this.endpoint = config.getEndpoint(api); 
+    this.endpoint.client.defaults =  this.endpoint.defaults;
     this.eventAggregator = EventAggregator;
   }
 
@@ -42,8 +42,8 @@ export class RestService {
       });
   }
 
-  get(endpoint, header) {
-    var promise = this.endpoint.find(endpoint)
+  get(endpoint, header, info) {
+    var promise = this.endpoint.find(endpoint, info)
     this.publish(promise);
     return promise
       .then((result) => {

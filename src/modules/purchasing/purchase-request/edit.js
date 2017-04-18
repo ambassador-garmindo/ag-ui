@@ -23,8 +23,8 @@ export class Edit {
         moment.locale(locale);
         var id = params.id;
         this.data = await this.service.getById(id);
-        this.data.date = moment(this.data.date).format("YYYY-MM-DD");
-        this.data.expectedDeliveryDate = moment(this.data.expectedDeliveryDate).format("YYYY-MM-DD");
+        // this.data.date = moment(this.data.date).format("YYYY-MM-DD");
+        // this.data.expectedDeliveryDate = moment(this.data.expectedDeliveryDate).format("YYYY-MM-DD");
 
         this.data.unit.toString = function () {
             return [this.division.name, this.name]
