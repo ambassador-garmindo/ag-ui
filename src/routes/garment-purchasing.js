@@ -34,7 +34,7 @@ module.exports = [
         auth: true,
         settings: {
             group: "g-purchasing",
-            //permission: { "P1": 1, "P3": 1, "P4": 1, "P6": 1, "P7": 1, "S4": 1, "C3": 1, "E": 1, "K": 1, "S1": 1, "S2": 1, "S3": 1, "U1": 1, "F1": 1, "F2": 1, "L3": 1, "LK": 1, "L8": 1, "L2": 1, "C2": 1, "A2": 1, "C1": 1, "B5": 1, "L1": 1, "B4": 1, "B3": 1, "C4": 1, "OJ": 1, "C9": 1, "A1": 1, "B9": 1, "A4": 1, "C5": 1, "P1A": 1, "C2A": 1, "C2B": 1, "FP": 1, "PI": 1, "P": 1, "FC": 1, "GU": 1, "GS": 1, "PG": 1, "C1A": 1, "C1B": 1, "KK": 1, "B1": 1 },
+            permission: { "P1": 1, "P3": 1, "P4": 1, "P6": 1, "P7": 1, "S4": 1, "C3": 1, "E": 1, "K": 1, "S1": 1, "S2": 1, "S3": 1, "U1": 1, "F1": 1, "F2": 1, "L3": 1, "LK": 1, "L8": 1, "L2": 1, "C2": 1, "A2": 1, "C1": 1, "B5": 1, "L1": 1, "B4": 1, "B3": 1, "C4": 1, "OJ": 1, "C9": 1, "A1": 1, "B9": 1, "A4": 1, "C5": 1, "P1A": 1, "C2A": 1, "C2B": 1, "FP": 1, "PI": 1, "P": 1, "FC": 1, "GU": 1, "GS": 1, "PG": 1, "C1A": 1, "C1B": 1, "KK": 1, "B1": 1 },
             iconClass: 'fa fa-dashboard'
         }
     },
@@ -72,7 +72,7 @@ module.exports = [
         auth: true,
         settings: {
             group: "g-purchasing",
-            //permission: { "C9": 1, "PG": 1, },
+            permission: { "C9": 1, "PG": 1, },
             iconClass: 'fa fa-dashboard'
         }
     },
@@ -98,7 +98,7 @@ module.exports = [
         auth: true,
         settings: {
             group: "g-purchasing",
-            //permission: { "C9": 1, "PG": 1, },
+            permission: { "C9": 1, "PG": 1, },
             conClass: 'fa fa-dashboard'
         }
     },
@@ -111,7 +111,7 @@ module.exports = [
         auth: true,
         settings: {
             group: "g-purchasing",
-            //permission: {  "C9": 1, "PG": 1 },
+            permission: {  "C9": 1, "PG": 1 },
             conClass: 'fa fa-dashboard'
         }
     },
@@ -124,7 +124,7 @@ module.exports = [
         auth: true,
         settings: {
             group: "g-purchasing",
-            //permission: { "C9": 1, "C5": 1 },
+            permission: { "C9": 1, "C5": 1 },
             conClass: 'fa fa-dashboard'
         }
     },
@@ -137,7 +137,7 @@ module.exports = [
         auth: true,
         settings: {
             group: "g-purchasing",
-            //permission: { "C9": 1, "PG": 1, "C5": 1, "B9": 1 },
+            permission: { "C9": 1, "PG": 1, "C5": 1, "B9": 1 },
             conClass: 'fa fa-dashboard'
         }
     },
@@ -150,7 +150,7 @@ module.exports = [
         auth: true,
         settings: {
             group: "g-purchasing",
-            //permission: { "C9": 1, "PG": 1 },
+            permission: { "C9": 1, "PG": 1 },
             iconClass: 'fa fa-dashboard'
         }
     },
@@ -163,7 +163,7 @@ module.exports = [
         auth: true,
         settings: {
             group: "g-purchasing",
-            //permission: { "C9": 1, "PG": 1, "B9": 1, "B1": 1, "C1B" : 1, "C1A" : 1, "C2C" : 1, "C2B" : 1, "C2A" : 1 },
+            permission: { "C9": 1, "PG": 1, "B9": 1, "B1": 1, "C1B" : 1, "C1A" : 1, "C2C" : 1, "C2B" : 1, "C2A" : 1 },
             iconClass: 'fa fa-dashboard'
         }
     },
@@ -176,7 +176,7 @@ module.exports = [
         auth: true,
         settings: {
             group: "g-purchasing",
-            //permission: { "C9": 1, "PG": 1 },
+            permission: { "C9": 1, "PG": 1 },
             iconClass: 'fa fa-dashboard'
         }
     },
@@ -202,7 +202,7 @@ module.exports = [
         auth: true,
         settings: {
             group: "g-purchasing",
-            //permission: { "C9": 1, "PG": 1, "B9": 1, "B1": 1, "C1B" : 1, "C1A" : 1, "C2C" : 1, "C2B" : 1, "C2A" : 1 },
+            permission: { "C9": 1, "PG": 1, "B9": 1, "B1": 1, "C1B" : 1, "C1A" : 1, "C2C" : 1, "C2B" : 1, "C2A" : 1 },
             iconClass: 'fa fa-dashboard'
         }
     },
@@ -215,7 +215,7 @@ module.exports = [
         auth: true,
         settings: {
             group: "g-purchasing",
-            //permission: { "C9": 1, "PG": 1 },
+            permission: { "C9": 1, "PG": 1 },
             iconClass: 'fa fa-dashboard'
         }
     },
@@ -241,7 +241,7 @@ module.exports = [
         auth: true,
         settings: {
             group: "g-purchasing",
-            //permission: { "C9": 1, "PG": 1 },
+            permission: { "C9": 1, "PG": 1 },
             iconClass: 'fa fa-dashboard'
         }
     },
@@ -267,20 +267,20 @@ module.exports = [
         auth: true,
         settings: {
             group: "g-purchasing",
-            //permission: { "C9": 1, "PG": 1 },
+            permission: { "C9": 1, "PG": 1 },
             iconClass: 'fa fa-dashboard'
         }
     },
     {
         route: '/garment/monitoring-intern-note',
         name: 'monitoring-intern-note',
-        moduleId: './modules/garment-purchasing/monitoring-intern-note/index',
+        moduleId: './modules/garment-purchasing/monitoring-intern-note-new/index',
         nav: true,
         title: 'Monitoring Nota Intern',
         auth: true,
         settings: {
             group: "g-purchasing",
-            //permission: { "C9": 1, "PG": 1 },
+            permission: { "C9": 1, "PG": 1 },
             iconClass: 'fa fa-dashboard'
         }
     },
@@ -298,28 +298,68 @@ module.exports = [
         }
     },
     {
-        route: '/garment/unit-receipt-note',
+        route: '/garment/unit-receipt-note-by-user',
         name: 'unit-receipt-note',
-        moduleId: './modules/garment-purchasing/unit-receipt-note/index',
+        moduleId: './modules/garment-purchasing/unit-receipt-note-by-user/index',
         nav: true,
         title: 'Bon Terima Unit',
         auth: true,
         settings: {
             group: "g-purchasing",
-            //permission: { "C9": 1, "C1B" : 1, "C1A" : 1, "C2C" : 1, "C2B" : 1, "C2A" : 1  },
+            permission: { "C9": 1, "C1B" : 1, "C1A" : 1, "C2C" : 1, "C2B" : 1, "C2A" : 1  },
             iconClass: 'fa fa-dashboard'
         }
     },
     {
-        route: '/garment/unit-delivery-order',
+        route: '/garment/unit-receipt-note-all',
         name: 'unit-receipt-note',
-        moduleId: './modules/garment-purchasing/unit-delivery-order/index',
+        moduleId: './modules/garment-purchasing/unit-receipt-note-all/index',
+        nav: true,
+        title: 'Bon Terima Unit (Semua User)',
+        auth: true,
+        settings: {
+            group: "g-purchasing",
+            permission: { "C9": 1, "C1B" : 1, "C1A" : 1, "C2C" : 1, "C2B" : 1, "C2A" : 1  },
+            iconClass: 'fa fa-dashboard'
+        }
+    },
+    {
+        route: 'garment-receipt-correction-by-user',
+        name: 'garment-receipt-correction-by-user',
+        moduleId: './modules/garment-purchasing/garment-receipt-correction/index',
+        nav: true,
+        title: 'Koreksi Bon Terima Unit',
+        auth: true,
+        settings: {
+            group: "g-purchasing",
+            permission: { "C9": 1, "C1B" : 1, "C1A" : 1, "C2C" : 1, "C2B" : 1, "C2A" : 1, "PG": 1,  },
+            iconClass: 'fa fa-dashboard',
+            byUser:true
+        }
+    },
+    {
+        route: '/garment/unit-delivery-order-by-user',
+        name: 'unit-receipt-note-by-user',
+        moduleId: './modules/garment-purchasing/unit-delivery-order-by-user/index',
         nav: true,
         title: 'Unit Delivery Order',
         auth: true,
         settings: {
             group: "g-purchasing",
-            //permission: { "C9": 1, "C1B" : 1, "C1A" : 1, "C2C" : 1, "C2B" : 1, "C2A" : 1  },
+            permission: { "C9": 1, "C1B" : 1, "C1A" : 1, "C2C" : 1, "C2B" : 1, "C2A" : 1  },
+            iconClass: 'fa fa-dashboard'
+        }
+    },
+    {
+        route: '/garment/unit-delivery-order-all',
+        name: 'unit-receipt-note-all',
+        moduleId: './modules/garment-purchasing/unit-delivery-order-all/index',
+        nav: true,
+        title: 'Unit Delivery Order (Semua User)',
+        auth: true,
+        settings: {
+            group: "g-purchasing",
+            permission: { "C9": 1, "C1B" : 1, "C1A" : 1, "C2C" : 1, "C2B" : 1, "C2A" : 1  },
             iconClass: 'fa fa-dashboard'
         }
     },
@@ -328,24 +368,37 @@ module.exports = [
         name: 'unit-delivery-order-retur',
         moduleId: './modules/garment-purchasing/unit-delivery-order-retur/index',
         nav: true,
-        title: 'Retur Delivery Order',
+        title: 'DO Retur',
         auth: true,
         settings: {
             group: "g-purchasing",
-            //permission: { "C9": 1, "C1B" : 1, "C1A" : 1, "C2C" : 1, "C2B" : 1, "C2A" : 1  },
+            permission: { "C9": 1, "C1B" : 1, "C1A" : 1, "C2C" : 1, "C2B" : 1, "C2A" : 1  },
             iconClass: 'fa fa-dashboard'
         }
     },
     {
-        route: '/garment/unit-expenditure-note',
-        name: 'unit-expenditure-note',
-        moduleId: './modules/garment-purchasing/unit-expenditure-note/index',
+        route: '/garment/unit-expenditure-note-by-user',
+        name: 'unit-expenditure-note-by-user',
+        moduleId: './modules/garment-purchasing/unit-expenditure-note-by-user/index',
         nav: true,
         title: 'Bon Pengeluaran Unit',
         auth: true,
         settings: {
             group: "g-purchasing",
-            //permission: { "C9": 1, "PG": 1 },
+            permission: { "C9": 1, "C1B" : 1, "C1A" : 1, "C2C" : 1, "C2B" : 1, "C2A" : 1 },
+            iconClass: 'fa fa-dashboard'
+        }
+    },
+    {
+        route: '/garment/unit-expenditure-note-all',
+        name: 'unit-expenditure-note-all',
+        moduleId: './modules/garment-purchasing/unit-expenditure-note-all/index',
+        nav: true,
+        title: 'Bon Pengeluaran Unit (Semua User)',
+        auth: true,
+        settings: {
+            group: "g-purchasing",
+            permission: { "C9": 1, "C1B" : 1, "C1A" : 1, "C2C" : 1, "C2B" : 1, "C2A" : 1  },
             iconClass: 'fa fa-dashboard'
         }
     },
@@ -371,7 +424,7 @@ module.exports = [
         auth: true,
         settings: {
             group: "g-purchasing",
-            //permission: { "C9": 1, "C1B" : 1, "C1A" : 1, "C2C" : 1, "C2B" : 1, "C2A" : 1, "PG": 1,  },
+            permission: { "C9": 1, "C1B" : 1, "C1A" : 1, "C2C" : 1, "C2B" : 1, "C2A" : 1, "PG": 1,  },
             iconClass: 'fa fa-dashboard'
         }
     },
@@ -384,7 +437,7 @@ module.exports = [
         auth: true,
         settings: {
             group: "g-purchasing",
-            //permission: { "C9": 1, "PG": 1 },
+            permission: { "C9": 1, "PG": 1 },
             iconClass: 'fa fa-dashboard'
         }
     },
@@ -410,7 +463,7 @@ module.exports = [
         auth: true,
         settings: {
             group: "g-purchasing",
-            //permission: { "C9": 1, "PG": 1 },
+            permission: { "C9": 1, "PG": 1 },
             iconClass: 'fa fa-dashboard'
         }
     },
@@ -423,7 +476,7 @@ module.exports = [
         auth: true,
         settings: {
             group: "g-purchasing",
-            //permission: { "C9": 1, "PG": 1 },
+            permission: { "C9": 1, "PG": 1 },
             iconClass: 'fa fa-dashboard'
         }
     },
@@ -449,7 +502,7 @@ module.exports = [
         auth: true,
         settings: {
             group: "g-purchasing",
-            //permission: { "C9": 1, "PG": 1, "B9": 1, "B1": 1 },
+            permission: { "C9": 1, "PG": 1, "B9": 1, "B1": 1 },
             iconClass: 'fa fa-dashboard'
         }
     },
@@ -462,7 +515,7 @@ module.exports = [
         auth: true,
         settings: {
             group: "g-purchasing",
-            //permission: { "C9": 1, "PG": 1, "B9": 1, "B1": 1 },
+            permission: { "C9": 1, "PG": 1, "B9": 1, "B1": 1 },
             iconClass: 'fa fa-dashboard'
         }
     },
@@ -475,7 +528,7 @@ module.exports = [
         auth: true,
         settings: {
             group: "g-purchasing",
-            //permission: { "C9": 1, "PG": 1, "B9": 1, "B1": 1 },
+            permission: { "C9": 1, "PG": 1, "B9": 1, "B1": 1 },
             iconClass: 'fa fa-dashboard'
         }
     },
@@ -488,7 +541,7 @@ module.exports = [
         auth: true,
         settings: {
             group: "g-purchasing",
-            //permission: { "C9": 1, "PG": 1, "B9": 1, "B1": 1 },
+            permission: { "C9": 1, "PG": 1, "B9": 1, "B1": 1 },
             iconClass: 'fa fa-dashboard'
         }
     },
@@ -501,9 +554,61 @@ module.exports = [
         auth: true,
         settings: {
             group: "g-purchasing",
-            //permission: {"C9": 1, "PG": 1, "B9": 1, "B1": 1},
+            permission: {"C9": 1, "PG": 1, "B9": 1, "B1": 1},
             iconClass: 'fa fa-dashboard'
         }
-    }
+    },// --7/9/2020
+    {
+        route: 'garment/po-master-distribution',
+        name: 'garment-po-master-distribution',
+        moduleId: './modules/garment-purchasing/po-master-distribution/index',
+        nav: true,
+        title: 'Pembagian PO Master',
+        auth: true,
+        settings: {
+            group: "g-purchasing",
+            permission: {"C9": 1, "PG": 1, "B9": 1, "B1": 1},
+            iconClass: 'fa fa-dashboard'
+        }
+    },
+    {
+        route: 'garment/monitoring-ro-job-order',
+        name: 'garment-monitoring-ro-job-order',
+        moduleId: './modules/garment-purchasing/monitoring-ro-job-order/index',
+        nav: true,
+        title: 'Monitoring RO Job Order',
+        auth: true,
+        settings: {
+            group: "g-purchasing",
+            permission: {"PG": 1, "C9": 1},
+            iconClass: 'fa fa-dashboard'
+        }
+    },
+    {
+        route: 'garment/monitoring-ro-master',
+        name: 'garment-monitoring-ro-master',
+        moduleId: './modules/garment-purchasing/monitoring-ro-master/index',
+        nav: true,
+        title: 'Monitoring RO Master',
+        auth: true,
+        settings: {
+            group: "g-purchasing",
+            permission: {"PG": 1, "C9": 1},
+            iconClass: 'fa fa-dashboard'
+        }
+    },
+    {
+        route: 'garment-purchase-order/purchase-book-report',
+        name: 'garment-purchasing-book-report',
+        moduleId: './modules/garment-purchasing/purchase-book-report/index',
+        nav: true,
+        title: 'Laporan Buku Pembelian Bahan Baku, Embalace, Umum',
+        auth: true,
+        settings: {
+            group: "g-purchasing",
+            permission: {"B1": 1, "C9": 1},
+            iconClass: 'fa fa-dashboard'
+        }
+    },
 
 ]

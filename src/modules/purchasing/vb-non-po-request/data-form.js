@@ -1,9 +1,7 @@
 import { inject, bindable, containerless, computedFrom, BindingEngine } from 'aurelia-framework'
 import { Service } from "./service";
 
-var BankLoader = require('../../../loader/account-banks-loader');
-var SupplierLoader = require('../../../loader/supplier-loader');
-var BuyerLoader = require('../../../loader/buyers-loader');
+const UnitLoader = require('../../../loader/unit-loader');
 var CurrencyLoader = require('../../../loader/currency-loader');
 
 @containerless()
@@ -14,6 +12,8 @@ export class DataForm {
     @bindable error = {};
     @bindable title;
     @bindable selectedCurrency;
+    @bindable unit;
+    @bindable division;
 
     controlOptions = {
         label: {
@@ -23,6 +23,7 @@ export class DataForm {
             length: 5
         }
     }
+
 
     controlOptionsLabel = {
         label: {
@@ -51,6 +52,16 @@ export class DataForm {
         this.context = context;
         this.data = this.context.data;
         this.error = this.context.error;
+
+        this.selectedCurrency = this.data.Currency;
+
+        if (this.data.Unit && this.data.Unit.Id) {
+            this.selectedUnit = this.data.Unit;
+        }
+
+        if (this.data.Division && this.data.Division.Id) {
+            this.selectedDivision = this.data.Division;
+        }
 
         if (!this.data.Spinning1) {
             this.data.Spinning1 = false;
@@ -111,28 +122,70 @@ export class DataForm {
 
     }
 
-    // get bankLoader() {
-    //     return BankLoader;
-    // }
+    @bindable selectedUnit;
+    selectedUnitChanged(newValue, oldValue) {
 
-    // bankView = (bank) => {
-    //     return bank.AccountName ? `${bank.AccountName} - ${bank.BankName} - ${bank.AccountNumber} - ${bank.Currency.Code}` : '';
-    // }
+        if (this.selectedUnit && this.selectedUnit.Id) {
+            this.data.unit = {};
+            this.data.unit.id = this.selectedUnit.Id;
+            this.data.unit.name = this.selectedUnit.Name;
+            this.data.unit.code = this.selectedUnit.Code;
+            
+            if (this.selectedUnit.Division) {
+                this.data.division = {};
+                this.data.division.id = this.selectedUnit.Division.Id;
+                this.data.division.name = this.selectedUnit.Division.Name;
+            }
+            else{
+                this.data.division = {};
+                this.data.division.id = this.data.Division.Id;
+                this.data.division.name = this.data.Division.Name;
+            }
 
-    // get buyerLoader() {
-    //     return BuyerLoader;
-    // }
+        }
+        else {
+            this.data.unit.id = this.selectedUnit.id;
+            this.data.unit.name = this.selectedUnit.name;
+            this.data.unit.code = this.selectedUnit.code;
+            this.data.unit.Division.Id = this.selectedUnit.divisionname;
+            this.data.unit.Division.Name = this.selectedUnit.divisionid;
+        }
+    }
+
+
+
+    unitView = (unit) => {
+        return `${unit.Code} - ${unit.Name}`
+
+    }
+
+    get unitLoader() {
+        return UnitLoader;
+    }
 
     get currencyLoader() {
         return CurrencyLoader;
     }
 
+    @bindable selectedCurrency;
     selectedCurrencyChanged(newValue, oldValue) {
         this.data.Currency = newValue;
     }
 
-    // buyerView = (buyer) => {
-    //     return `${buyer.Code} / ${buyer.Name}`
-    // }
+    get getOthersValue() {
+        if (this.data.DetailOthers == "") {
+            return "..........";
+        } else {
+            return this.data.DetailOthers;
+        }
+    }
+
+    get setOthersValue() {
+        if (this.context.hasEdit == true) {
+            return "";
+        } else {
+            return this.data.DetailOthers;
+        }
+    }
 
 }

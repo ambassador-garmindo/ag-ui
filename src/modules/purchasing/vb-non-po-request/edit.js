@@ -13,6 +13,7 @@ export class Edit {
     }
 
     isEdit = true;
+    isShowing = true;
 
     async activate(params) {
         let id = params.id;
@@ -24,7 +25,7 @@ export class Edit {
     }
 
     saveCallback(event) {
-        this.dialog.prompt('Apakah anda yakin akan menyimpan perubahan data ini?', 'Ubah Bukti Pembayaran Uang Muka')
+        this.dialog.prompt('Apakah anda yakin akan menyimpan perubahan data ini?', 'Ubah Permohonan VB Non PO')
             .then((response) => {
                 if (response.ok) {
                     this.service.update(this.data)

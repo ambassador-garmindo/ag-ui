@@ -47,31 +47,31 @@ export class DataForm {
         var selectedBeacukai = newValue;
        
         if (selectedBeacukai) {
-            if (selectedBeacukai.BonNo) {
+            if (selectedBeacukai.BCId) {
                 this.data.beacukaiNo = selectedBeacukai.BCNo;
-                this.data.beacukaiDate = selectedBeacukai.BCDate;
-                this.data.customType = selectedBeacukai.BCType;
-                this.data.billNo=selectedBeacukai.BonNo;
+                this.data.beacukaiDate = selectedBeacukai.TglBCNo;
+                this.data.customType = selectedBeacukai.JenisBC;
+                this.data.billNo=selectedBeacukai.BCId;
+                this.data.arrivalDate = selectedBeacukai.Hari;
                 this.context.beacukaiAU.editorValue="";
             }else {
                 this.data.beacukaiDate = null;
                 this.data.beacukaiNo = null;
                 this.data.customType=null;
                 this.data.billNo="";
+                this.data.arrivalDate = null;
             }
         //     if (oldValue) {
         //         this.data.beacukaiDate = null;
         //         this.data.beacukaiNo = null;
         //         this.data.customType=null;
         //         this.data.billNo="";
-        //         console.log(oldValue);
         //     }
         // } else {
         //     this.data.beacukaiDate = null;
         //     this.data.beacukaiNo = null;
         //     this.data.customType=null;
         //     this.data.billNo="";
-        //     console.log("dsdsds");
         }
     }
     isBCDLChanged(e) {
@@ -86,6 +86,7 @@ export class DataForm {
             this.data.beacukaiDate = undefined;
             this.data.beacukaiNo = undefined;
             this.data.customType=undefined;
+            this.data.arrivalDate =undefined;
        }else
        {
             this.beacukai={};
@@ -94,6 +95,7 @@ export class DataForm {
             this.data.beacukaiDate = undefined;
             this.data.beacukaiNo = undefined;
             this.data.customType=undefined;
+            this.data.arrivalDate =undefined;
        }
     }
     bind(context) {
@@ -177,7 +179,7 @@ export class DataForm {
     }
     customsView = (customs) => {
        if(customs.BCNo)
-       return `${customs.BCNo} - ${customs.BCType}- ${customs.BCDate}`;
+       return `${customs.BCNo} - ${customs.JenisBC}- ${customs.TglBCNo.toString()}`;
     }
     currencyView = (currency) => {
         if(this.data.Id)

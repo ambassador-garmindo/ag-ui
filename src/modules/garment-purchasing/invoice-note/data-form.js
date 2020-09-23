@@ -63,6 +63,7 @@ export class DataForm {
         this.data = this.context.data;
         this.error = this.context.error;
         this.options.readOnly = this.readOnly;
+        console.log(context);
         if(this.data.Id)
         {
             this.readO=true;
@@ -240,8 +241,8 @@ export class DataForm {
         this.context.vatVM.editorValue = "";
         
         this.options.useVat=selectedUseVat;
-        if (!this.data.useIncomeTax && !this.data.useVat) {
-            this.data.isPayTax = false
+        if (!this.data.useVat) {
+            this.data.isPayVat = false
         }
         if (this.context.error.useVat) {
             this.context.error.useVat = "";
@@ -259,7 +260,7 @@ export class DataForm {
         //this.incomeTax={};
 
         this.options.useIncomeTax=selectedUseIncomeTax;
-        if (!this.data.useIncomeTax && !this.data.useVat) {
+        if (!this.data.useIncomeTax) {
             this.data.isPayTax = false
         }
         if (this.context.error.useIncomeTax) {

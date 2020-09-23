@@ -1,5 +1,7 @@
 import { inject, bindable, computedFrom } from 'aurelia-framework'
 import { Service } from "./service";
+var moment = require("moment");
+var SupplierLoader = require('../../../loader/garment-supplier-loader');
 
 @inject(Service)
 export class DataForm {
@@ -10,6 +12,7 @@ export class DataForm {
     @bindable title;
     @bindable deliveryOrder;
     @bindable correctionType;
+    @bindable selectedSupplier;
 
     constructor(service) {
         this.service = service;
@@ -57,12 +60,42 @@ export class DataForm {
         }
     }
 
-    
+    get supplierLoader() {
+        return SupplierLoader;
+    }
+
+    supplierView = (supplier) => {
+        var code=supplier.code? supplier.code : supplier.Code;
+        var name=supplier.name? supplier.name : supplier.Name;
+        return `${code} - ${name}`
+    }
+
+    selectedSupplierChanged(newValue) {
+        var _selectedSupplier = newValue;
+        if (_selectedSupplier) {
+            this.filterDO={
+                SupplierName:_selectedSupplier.name
+            };
+        }
+        else{
+            this.filterDO={};
+            this.selectedSupplier=null;
+            this.data.Items=[];
+            this.data.DONo=null;
+            this.context.supplierViewModel.editorValue = "";
+            this.context.doViewModel.editorValue = "";
+        }
+        this.context.doViewModel.editorValue = "";
+        this.deliveryOrder = null;
+        this.data.Items = [];
+    }
 
     get garmentDeliveryOrderLoader() {
         return (keyword) => {
             var info = {
               keyword: keyword,
+              order: {"DONo": "asc"},
+              filter: JSON.stringify(this.filterDO)
             };
             return this.service.searchDeliveryOrder(info)
                 .then((result) => {
@@ -115,18 +148,27 @@ console.log(detail)
 
                     correctionNoteItem.Product = detail.product;
 
-                    correctionNoteItem.Quantity = parseFloat((detail.doQuantity - detail.returQuantity).toFixed(2));
+                    // correctionNoteItem.Quantity = parseFloat((detail.doQuantity - detail.returQuantity).toFixed(2));
                     
-                    correctionNoteItem.Quantities = parseFloat((detail.doQuantity - detail.returQuantity).toFixed(2));
+                    // correctionNoteItem.Quantities = parseFloat((detail.doQuantity - detail.returQuantity).toFixed(2));
 
-                    correctionNoteItem.QuantityCheck=parseFloat((detail.doQuantity - detail.returQuantity).toFixed(2));
+                    // correctionNoteItem.QuantityCheck=parseFloat((detail.doQuantity - detail.returQuantity).toFixed(2));
                     
+                    correctionNoteItem.Quantity = parseFloat((detail.quantityCorrection - detail.returQuantity).toFixed(2));
+                    
+                    correctionNoteItem.Quantities = parseFloat((detail.quantityCorrection - detail.returQuantity).toFixed(2));
+
+                    correctionNoteItem.QuantityCheck=parseFloat((detail.quantityCorrection - detail.returQuantity).toFixed(2));
+                    
+
                     correctionNoteItem.Uom = detail.purchaseOrderUom;
 
                     correctionNoteItem.PricePerDealUnitBefore = parseFloat((detail.pricePerDealUnitCorrection).toFixed(2));
                     correctionNoteItem.PricePerDealUnitAfter = detail.pricePerDealUnitCorrection;
                     correctionNoteItem.PriceTotalBefore = parseFloat((detail.priceTotalCorrection).toFixed(2));
-                    correctionNoteItem.PriceTotalAfter = parseFloat((detail.priceTotalCorrection).toFixed(2));
+                    // correctionNoteItem.PriceTotalAfter = parseFloat((detail.priceTotalCorrection).toFixed(2));
+                    
+                    correctionNoteItem.PriceTotalAfter = parseFloat((detail.pricePerDealUnitCorrection*correctionNoteItem.Quantity).toFixed(2));
 
                     this.data.Items.push(correctionNoteItem);
                 }
@@ -158,5 +200,9 @@ console.log(detail)
                 this.error.DONo = null;
             }
         }
+    }
+
+    doView = (DO) => {
+        return `${DO.doNo} - ${moment(DO.doDate).format("DD-MMM-YYYY")}` 
     }
 }

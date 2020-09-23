@@ -104,19 +104,19 @@ module.exports = [
             iconClass: 'fa fa-dashboard'
         }
     },
-    {
-        route: 'vb-non-po-request',
-        name: 'vb-non-po-request',
-        moduleId: './modules/purchasing/vb-non-po-request/index',
-        nav: true,
-        title: 'Permohonan VB Non PO',
-        auth: true,
-        settings: {
-            group: "purchasing",
-            permission: { "AG1E": 1, "AG1K": 1, "AG2P": 1, "AG1P": 1,"P1": 1, "P3": 1, "P4": 1, "P6": 1, "P7": 1, "PI": 1, "PG": 1, "PK": 1, "C9": 1},
-            iconClass: 'fa fa-dashboard'
-        }
-    },
+    // {
+    //     route: 'vb-non-po-request',
+    //     name: 'vb-non-po-request',
+    //     moduleId: './modules/purchasing/vb-non-po-request/index',
+    //     nav: true,
+    //     title: 'Permohonan VB Non PO',
+    //     auth: true,
+    //     settings: {
+    //         group: "purchasing",
+    //         permission: { "AG1E": 1, "AG1K": 1, "AG2P": 1, "AG1P": 1,"P1": 1, "P3": 1, "P4": 1, "P6": 1, "P7": 1, "PI": 1, "PG": 1, "PK": 1, "C9": 1},
+    //         iconClass: 'fa fa-dashboard'
+    //     }
+    // },
     {
         route: 'po-external/all',
         name: 'purchase-order-external-kasei',

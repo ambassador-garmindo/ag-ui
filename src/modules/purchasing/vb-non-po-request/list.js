@@ -14,19 +14,29 @@ export class List {
       return {}
   }
 
-  context = ["Detail", "Cetak Bukti Pembayaran"]
+  context = ["Detail", "Cetak Bukti Permohonan"]
 
   columns = [
-    { field: "DocumentNo", title: "No. VB" },
+    { field: "VBNo", title: "No. VB" },
     {
-      field: "DatePayment", title: "Tanggal", formatter: function (value, data, index) {
+      field: "Date", title: "Tanggal", formatter: function (value, data, index) {
         return moment(value).format("DD MMM YYYY");
       }
     },
-    { field: "BuyerName", title: "Beban Unit" },
-    { field: "CategoryAcceptance", title: "Dibuat oleh" },
-    
-    { field: "CurrencyCode", title: "Status Pots" }
+    { field: "UnitName", title: "Unit Pemohon" },
+    { field: "CreatedBy", title: "Dibuat oleh" },
+    {
+      field: "Apporve_Status", title: "Status Approved",
+      formatter: function (value, row, index) {
+        return value ? "Sudah" : "Belum";
+      }
+    },
+    {
+      field: "Complete_Status", title: "Status Complete",
+      formatter: function (value, row, index) {
+        return value ? "Sudah" : "Belum";
+      }
+    }
   ];
 
   async activate(params) {
@@ -37,25 +47,25 @@ export class List {
     let order = {};
 
     if (info.sort)
-        order[info.sort] = info.order;
+      order[info.sort] = info.order;
     else
-        order["DatePayment"] = "desc";
+      order["LastModifiedUtc"] = "desc";
 
     let arg = {
-        page: parseInt(info.offset / info.limit, 10) + 1,
-        size: info.limit,
-        keyword: info.search,
-        order: order
+      page: parseInt(info.offset / info.limit, 10) + 1,
+      size: info.limit,
+      keyword: info.search,
+      order: order
     };
 
     return this.service.search(arg)
-        .then(result => {
-            return {
-                //total: result.info.total,
-                data: result.data
-            }
-        });
-}
+      .then(result => {
+        return {
+          total: result.info.total,
+          data: result.data
+        }
+      });
+  }
 
   constructor(router, service) {
     this.service = service;
@@ -69,7 +79,7 @@ export class List {
       case "Detail":
         this.router.navigateToRoute('view', { id: data.Id, search: this.ressearch });
         break;
-      case "Cetak Bukti Pembayaran":
+      case "Cetak Bukti Permohonan":
         this.service.getSalesReceiptPdfById(data.Id);
         break;
     }
@@ -77,10 +87,21 @@ export class List {
 
   contextShowCallback(index, name, data) {
     switch (name) {
-      case "Cetak Bukti Pembayaran":
+      case "Cetak Bukti Permohonan":
         return data;
       default:
         return true;
+    }
+  }
+
+  posting() {
+    if (this.dataToBePosted.length > 0) {
+      // console.log(this.dataToBePosted);
+      this.service.post(this.dataToBePosted).then(result => {
+        this.table.refresh();
+      }).catch(e => {
+        this.error = e;
+      })
     }
   }
 
