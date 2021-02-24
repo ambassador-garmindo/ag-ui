@@ -87,6 +87,7 @@ router-view > div > router-view,
         min-height: 50px;
         border-radius: 0;
         background-color: #061B30;
+
     }
 
 .layout-top-nav .main-header .navbar {

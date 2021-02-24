@@ -16,7 +16,10 @@ export class List {
     @bindable KtgrItem;
     
     KategoriItems= ['','BAHAN BAKU','BAHAN EMBALANCE','BAHAN PENDUKUNG']
-    UnitItems = ['','KONFEKSI 2A','KONFEKSI 2B','KONFEKSI 2C','KONFEKSI 1A','KONFEKSI 1B']
+    //UnitItems = ['','KONFEKSI 2A','KONFEKSI 2B','KONFEKSI 2C','KONFEKSI 1A','KONFEKSI 1B']
+    UnitItems = ['','AMBASSADOR GARMINDO 2']
+    suppTypeItems = ['', 'LOKAL', 'IMPORT']
+    customsTypeItems = ['', 'FASILITAS', 'NONFASILITAS']
 
     search(){
             this.info.page = 1;
@@ -34,6 +37,8 @@ export class List {
             unitcode : this.unit ? this.unit : "",
             category : this.category ? this.category : "",
             //suppliertype : this.Tipe
+            suppliertype : this.supplierType ? this.supplierType : "",
+            customstype : this.customsType ? this.customsType : ""
         };
         this.service.search(info)
             .then(result=>{
@@ -66,11 +71,13 @@ export class List {
     }
 
     reset() {
-        this.dateFrom= "",
+        this.dateFrom="",
         this.dateTo="",
         this.KtgrItem="",
-        this.UnitItem=""
-        
+        this.UnitItem="",
+        this.supplierType="",
+        this.customsType="",
+        this.data=null
     }
 
     ExportToExcel() {
@@ -79,6 +86,8 @@ export class List {
             dateTo : this.dateTo ? moment(this.dateTo).format("YYYY-MM-DD") : "",
             unitcode : this.unit ? this.unit : "",
             category : this.category ? this.category : "",
+            suppliertype : this.supplierType ? this.supplierType : "",
+            customstype : this.customsType ? this.customsType : ""
         };
         
         this.service.generateExcel(args);
@@ -97,18 +106,20 @@ export class List {
     UnitItemChanged(newvalue){
         console.log(newvalue);
         if (newvalue) {
-            if (newvalue === "KONFEKSI 2A") {
-                this.unit = "C2A";
-            }
-            else if (newvalue === "KONFEKSI 2B") { 
-                this.unit = "C2B"; 
-            }
-            else if (newvalue === "KONFEKSI 2C") {
-                this.unit = "C2C"; 
-            }else if(newvalue === "KONFEKSI 1A"){
-                this.unit = "C1A";
-            }else if(newvalue === "KONFEKSI 1B"){
-                this.unit = "C1B";
+            // if (newvalue === "KONFEKSI 2A") {
+            //     this.unit = "C2A";
+            // }
+            // else if (newvalue === "KONFEKSI 2B") { 
+            //     this.unit = "C2B"; 
+            // }
+            // else if (newvalue === "KONFEKSI 2C") {
+            //     this.unit = "C2C"; 
+            // }else if(newvalue === "KONFEKSI 1A"){
+            //     this.unit = "C1A";
+            // }else if(newvalue === "KONFEKSI 1B"){
+            //     this.unit = "C1B";
+            if (newvalue === "AMBASSADOR GARMINDO 2") {
+                this.unit = "AG2";
             }else{
                 this.unit = "";
             }

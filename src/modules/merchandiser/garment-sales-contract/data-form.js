@@ -163,7 +163,7 @@ export class DataForm {
   @bindable selectedAccountBank;
   selectedAccountBankChanged(newValue, oldValue) {
     if (newValue) {
-      this.data.AccountBank =newValue;
+      this.data.AccountBank = newValue;
     } else {
       this.data.AccountBank = null;
     }

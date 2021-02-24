@@ -41,6 +41,17 @@
                     if.bind="data.Supplier"
                     options.bind="controlOptions">
                 </au-textbox>
+
+                <au-dropdown
+                    label="Jenis Pembelian"
+                    value.bind="data.CustomsCategory"
+                    error.bind="error.CustomsCategory"
+                    read-only.bind="readOnly"
+                    if.bind="data.Supplier"
+                    items.bind="customsCategoryOptions"
+                    options.bind="controlOptions">
+                    <!-- change.delegate="customsCategoryChanged($event)" -->
+                </au-dropdown>
         
                 <au-datepicker 
                     label="Tgl. Order" 

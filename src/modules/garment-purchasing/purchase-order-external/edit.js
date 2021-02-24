@@ -21,6 +21,9 @@ export class Edit {
         var id = params.id;
         this.data = await this.service.getById(id);
 
+        var CustomsCategory = this.data.CustomsCategory;
+        this.data.CustomsCategory = CustomsCategory.substr(CustomsCategory.indexOf(' ')+1);
+
         var kurs = await this.service.getKurs(this.data.Currency.Code, new Date(this.data.OrderDate).toLocaleDateString());
         this.kurs=kurs[0];
 
@@ -46,7 +49,6 @@ export class Edit {
             if(this.data.IsIncomeTax){
                 this.data.Supplier.usetax=true;
             }
-            
         }
 
         if(this.data.IncomeTax){
@@ -109,6 +111,11 @@ export class Edit {
     }
 
     save(event) {
+
+        if(this.data.CustomsCategory != ''){
+            this.data.CustomsCategory = this.data.Supplier.Import ? "IMPORT " + this.data.CustomsCategory : "LOKAL " + this.data.CustomsCategory;
+        }
+        
         this.service.update(this.data).then(result => {
             this.cancel();
         }).catch(e => {

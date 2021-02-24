@@ -137,8 +137,6 @@ export class RestService {
       })
   }
 
-
-
   getXls(endpoint, header) {
     var request = {
       method: 'GET',
@@ -158,7 +156,16 @@ export class RestService {
     var getRequest = this.endpoint.client.fetch(endpoint, request)
     this.publish(getRequest);
     return this._downloadFile(getRequest);
+  }
 
+  getFile(endpoint, header) {
+    var request = {
+      method: 'GET',
+      headers: new Headers(Object.assign({}, this.header, header, { "x-timezone-offset": this.endpoint.defaults.headers["x-timezone-offset"] }))
+    };
+    var getRequest = this.endpoint.client.fetch(endpoint, request)
+    this.publish(getRequest);
+    return this._downloadFile(getRequest);
   }
 
   _downloadFile(request) {
@@ -170,7 +177,12 @@ export class RestService {
           return response.json()
             .then(result => {
               this.publish(request);
-              return Promise.reject(new Error(result.error));
+              //return Promise.reject(new Error(result.error));
+              if (typeof result.error === 'string' || result.error instanceof String) {
+                return Promise.reject(new Error(result.error));
+              } else {
+                return Promise.reject(result.error);
+              }
             });
         }
       })

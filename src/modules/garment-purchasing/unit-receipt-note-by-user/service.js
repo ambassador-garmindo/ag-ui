@@ -61,17 +61,18 @@ export class Service extends RestService {
                 return result.data;
             });
     }
-     getStorageById(id, select) {
-         var config = Container.instance.get(Config);
-         var _endpoint = config.getEndpoint("core");
-         var _serviceUri = `master/storages/${id}`;
+
+    getStorageById(id, select) {
+        var config = Container.instance.get(Config);
+        var _endpoint = config.getEndpoint("core");
+        var _serviceUri = `master/storages/${id}`;
         return _endpoint.find(_serviceUri)
              .then(result => {
                 return result.data;
              });
-     }
+    }
 
-     getUnitDOById(id) {
+    getUnitDOById(id) {
         var endpoint = `${UnitDOserviceUri}/${id}`;
         return super.get(endpoint);
     }
@@ -96,3 +97,4 @@ export class Service extends RestService {
         return super.list(endpoint, info);
     }
 }
+

@@ -32,6 +32,11 @@ export class Create {
     }
 
     save(event) {
+
+        if(this.data.CustomsCategory != ''){
+            this.data.CustomsCategory = this.data.Supplier.Import ? "IMPORT " + this.data.CustomsCategory : "LOKAL " + this.data.CustomsCategory;
+        }
+    
         console.log(this.data)
         this.service.create(this.data)
             .then(result => {

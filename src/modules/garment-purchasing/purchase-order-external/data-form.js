@@ -24,6 +24,7 @@ export class DataForm {
     termPaymentLocalOptions = ['DAN LIRIS', 'CMT', 'FREE FROM BUYER', 'SAMPLE'];
     typePaymentOptions = ['T/T AFTER', 'FREE', 'CASH', 'T/T BEFORE'];
     typePaymentStorageOptions = ['EX MASTER FREE', 'EX MASTER BELI', 'EX MASTER GUDANG'];
+    customsCategoryOptions = ['' ,'FASILITAS', 'NONFASILITAS'];
     categoryOptions = ['FABRIC', 'ACCESSORIES']
     qualityStandardTypeOptions = ['JIS', 'AATCC', 'ISO']
 
@@ -38,8 +39,6 @@ export class DataForm {
         }
     }
 
-    
-
     constructor(service, bindingEngine) {
         this.service = service;
         this.bindingEngine = bindingEngine;
@@ -50,13 +49,16 @@ export class DataForm {
         this.data = this.context.data;
         this.error = this.context.error;
         this.isItem = false;
+
+        if(this.data.CustomsCategory){
+            var CustomsCategory = this.data.CustomsCategory;
+            this.data.CustomsCategory = CustomsCategory.substr(CustomsCategory.indexOf(' ')+1);
+        }
         
         if(!this.data.OrderDate){
             this.data.OrderDate=new Date().toLocaleDateString();
         }
 
-        
-        
         if (this.data.Category) {
             if (this.data.Category === "FABRIC") {
                 this.isFabric = true;
@@ -68,6 +70,7 @@ export class DataForm {
         else {
             this.isFabric = true;
         }
+
         if(this.data.Items)
             if (this.data.Items.length > 0) {
                 this.isItem = true;
@@ -146,19 +149,25 @@ export class DataForm {
     }
 
     selectedSupplierChanged(newValue) {
-        var _selectedSupplier = newValue;
-        if (_selectedSupplier.Id) {
-            this.data.Supplier = _selectedSupplier;
-            this.data.Supplier.Import=_selectedSupplier.import;
-            this.data.Supplier.Code=_selectedSupplier.code;
-            this.data.Supplier.Name=_selectedSupplier.name;
-            this.data.Supplier.Id=_selectedSupplier.Id;
-            this.data.SupplierId = _selectedSupplier.Id ? _selectedSupplier.Id : "";
-            this.data.IsUseVat = _selectedSupplier.usevat;
-            this.data.IsIncomeTax = _selectedSupplier.usetax;
-            this.data.IncomeTax=_selectedSupplier.IncomeTaxes;
-            this.data.IncomeTax.Name=_selectedSupplier.IncomeTaxes.name;
-            this.data.IncomeTax.Rate=_selectedSupplier.IncomeTaxes.rate;
+        var _selectedSupplier= newValue;
+        if (_selectedSupplier) {
+                if (_selectedSupplier.Id) {
+                this.data.Supplier= _selectedSupplier;
+                this.data.Supplier.Import= _selectedSupplier.import;
+                this.data.Supplier.Code= _selectedSupplier.code;
+                this.data.Supplier.Name= _selectedSupplier.name;
+                this.data.Supplier.Id= _selectedSupplier.Id;
+                this.data.SupplierId= _selectedSupplier.Id ? _selectedSupplier.Id : "";
+                this.data.IsUseVat= _selectedSupplier.usevat;
+                this.data.IsIncomeTax= _selectedSupplier.usetax;
+                this.data.IncomeTax= _selectedSupplier.IncomeTaxes;
+                this.data.IncomeTax.Name= _selectedSupplier.IncomeTaxes.name;
+                this.data.IncomeTax.Rate= _selectedSupplier.IncomeTaxes.rate;
+                this.data.CustomsCategory= '';
+            }
+        } else {
+            this.data.Supplier= null;
+            this.data.CustomsCategory= null;
         }
     }
 
@@ -193,6 +202,15 @@ export class DataForm {
             this.data.CurrencyRate = 0;
         }
     }
+
+    // customsCategoryChanged(e) {
+    //     var selectedCustomsCategory = e.srcElement.value;
+    //     if (selectedCustomsCategory) {
+    //         this.data.CustomsCategory = this.data.Supplier.Import ? "IMPORT," + selectedCustomsCategory : "LOKAL," + selectedCustomsCategory;
+    //     }
+        
+    //     console.log(this.data.CustomsCategory);
+    // }
 
     categoryChanged(e) {
         var selectedCategory = e.srcElement.value;
@@ -252,6 +270,7 @@ export class DataForm {
             this.context.DetailsCollection.bind();
         }
     }
+
     paymentTypeChanged(e) {
         var selectedPayment = e.srcElement.value;
         if (selectedPayment) {

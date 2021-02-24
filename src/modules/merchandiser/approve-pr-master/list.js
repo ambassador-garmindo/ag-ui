@@ -24,7 +24,7 @@ export class List {
         },
         { field: "BuyerCode", title: "Kode Buyer" },
         { field: "BuyerName", title: "Nama Buyer" },
-        { field: "Article", title: "ARtikel" },
+        { field: "Article", title: "Artikel" },
         {
             field: "ShipmentDate", title: "Tgl. Shipment", formatter: function (value, data, index) {
                 return moment(value).format("DD MMM YYYY");

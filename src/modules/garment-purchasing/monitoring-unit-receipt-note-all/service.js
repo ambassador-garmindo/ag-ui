@@ -8,14 +8,16 @@ export class Service extends RestService {
     constructor(http, aggregator, config, endpoint) {
         super(http, aggregator, config, "purchasing-azure");
     }
-search(info) {
-    console.log(info);
+
+    search(info) {
+        console.log(info);
         var endpoint = `${serviceUri}`;
         return super.list(endpoint, info);
     }
-generateXls(no,  refNo,  roNo,  doNo,  unit,  supplier, dateFrom, dateTo) { 
-       console.log(no,  refNo,  roNo,  doNo,  unit,  supplier, dateFrom, dateTo);
-        var endpoint = `${serviceUri}/download?no=${no}&refNo=${refNo}&roNo=${roNo}&doNo=${doNo}&unit=${unit}&supplier=${supplier}&dateFrom=${dateFrom}&dateTo=${dateTo}`;
+    generateXls(no, refNo, roNo, doNo, unit, supplier, customsCategory, dateFrom, dateTo) { 
+
+        console.log(no,  refNo,  roNo,  doNo,  unit,  supplier, dateFrom, dateTo);
+        var endpoint = `${serviceUri}/download?no=${no}&refNo=${refNo}&roNo=${roNo}&doNo=${doNo}&unit=${unit}&supplier=${supplier}&customsCategory=${customsCategory}&dateFrom=${dateFrom}&dateTo=${dateTo}`;
         return super.getXls(endpoint);
     }
 }

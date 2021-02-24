@@ -10,53 +10,62 @@
         <div class="form-group">
             <div class="col-sm-3"></div>
             <div class="col-sm-6">
+
+                <au-dropdown
+                    label="Jenis Pembelian"
+                    value.bind="customsCategory"
+                    read-only.bind="readOnly"
+                    items.bind="customsCategoryOptions"
+                    options.bind="controlOptions">
+                </au-dropdown>
                 
+                <!-- <au-autocomplete 
+                    value.bind="no" 
+                    label="No Bon Terima Unit" 
+                    loader.bind="unitReceiptLoader"
+                    placeholder="Cari No Bon Terima Unit"
+                    read-only.bind="readOnly" 
+                    options.bind="controlOptions">
+                </au-autocomplete>
+
+                <au-textbox  
+                    value.bind="poRefPR"
+                    label="Nomor Ref. PR"
+                    placeholder="masukkan nomor referensi PR"  >
+                </au-textbox>
+
+                <au-textbox  
+                    value.bind="roNo"
+                    label="Nomor RO"
+                    placeholder="masukkan nomor RO"  >
+                </au-textbox>
+
+                <au-textbox  
+                    value.bind="doNo"
+                    label="Nomor SJ"
+                    placeholder="masukkan nomor SJ"  >
+                </au-textbox>
+
                 <au-autocomplete 
-                value.bind="no" 
-                label="No Bon Terima Unit" 
-                loader.bind="unitReceiptLoader"
-                placeholder="Cari No Bon Terima Unit"
-                read-only.bind="readOnly" 
-                options.bind="controlOptions">
-            </au-autocomplete>
+                    value.bind="unit" 
+                    label="Unit" 
+                    loader.bind="unitLoader"
+                    placeholder="Cari Unit"
+                    read-only.bind="readOnly" 
+                    text.bind = "unitView" 
+                    options.bind="controlOptions">
+                </au-autocomplete> -->
 
-             <au-textbox  
-                value.bind="poRefPR"
-                label="Nomor Ref. PR"
-                placeholder="masukkan nomor referensi PR"  >
-            </au-textbox>
-
-            <au-textbox  
-                value.bind="roNo"
-                label="Nomor RO"
-                placeholder="masukkan nomor RO"  >
-            </au-textbox>
-
-            <au-textbox  
-                value.bind="doNo"
-                label="Nomor SJ"
-                placeholder="masukkan nomor SJ"  >
-            </au-textbox>
-
-            <au-autocomplete 
-                value.bind="unit" 
-                label="Unit" 
-                loader.bind="unitLoader"
-                placeholder="Cari Unit"
-                read-only.bind="readOnly" 
-                text.bind = "unitView" 
-                options.bind="controlOptions">
-            </au-autocomplete>
-            <au-autocomplete 
-                value.bind="supplier" 
-                label="Supplier" 
-                loader.bind="supplierLoader"
-                placeholder="Cari Supplier" 
-                read-only.bind="readOnly" 
-                key="name" 
-                text="name"
-                options.bind="controlOptions">
-            </au-autocomplete>
+                <au-autocomplete 
+                    value.bind="supplier" 
+                    label="Supplier" 
+                    loader.bind="supplierLoader"
+                    placeholder="Cari Supplier" 
+                    read-only.bind="readOnly" 
+                    key="name" 
+                    text="name"
+                    options.bind="controlOptions">
+                </au-autocomplete>
 
                 <au-datepicker 
                     label="Tanggal Awal" 
@@ -78,7 +87,7 @@
             </div>
         </div>
         <br></br>
-        <div class="table-responsive">
+        <!-- <div class="table-responsive">
             <au-table 
                 view-model.ref="table" 
                 data.bind="loader" 
@@ -90,7 +99,73 @@
                     <button class='btn btn-primary' click.delegate="ExportToExcel()">Excel</button>
                 </div>
             </au-table>
-        </div>
-        <hr/>
+        </div> -->
     </au-input-form>
+    <form class="form-horizontal">
+        <div>
+            <a click.delegate="ExportToExcel()" class='btn btn-primary'>Cetak Excel</a>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover" border="1" id="doReport">
+                <thead align="center">
+                    <tr>
+                        <td>No</td>
+                        <td>Nomor Bon Terima Unit</td>
+                        <td>Tanggal Bon Terima Unit</td>
+                        <td>Unit</td>
+                        <td>Supplier</td>
+                        <td>Jenis Supplier</td>
+                        <td>Surat Jalan</td>
+                        <td>No PO Eksternal</td>
+                        <td>Jenis Pembelian</td>
+                        <td>No Ref PR</td>
+                        <td>No RO</td>
+                        <td>Artikel</td>
+                        <td>Kode Barang</td>
+                        <td>Nama Barang</td>
+                        <td>Jumlah</td>
+                        <td>Satuan</td>
+                        <td>Harga Satuan</td>
+                        <td>Keterangan</td>
+                        <td>Desain Color</td>
+                        <td>User</td>
+                        <td>Staff Pembelian</td>
+                        <td>Nota Intern</td>
+                    </tr>
+                </thead>
+            <tbody>
+                <tr repeat.for="IN of data">
+                    <td>${$index + 1}</td>
+                    <td if.bind="IN.rowspan" rowspan="${IN.rowspan}">${IN.no}</td>
+                    <td>${IN.dateBon}</td>
+                    <td>${IN.unit}</td>
+                    <td>${IN.supplier}</td>
+                    <td>${IN.supplierType}</td>
+                    <td>${IN.doNo}</td>
+                    <td>${IN.poEksternalNo}</td>
+                    <td>${IN.customsCategory}</td>
+                    <td>${IN.poRefPR}</td>
+                    <td>${IN.roNo}</td>
+                    <td>${IN.article}</td>
+                    <td>${IN.productCode}</td>
+                    <td>${IN.productName}</td>
+                    <td>${IN.qty}</td>
+                    <td>${IN.uom}</td>
+                    <td>${IN.price}</td>
+                    <td>${IN.remark}</td>
+                    <td>${IN.user}</td>
+                    <td>${IN.design}</td>
+                    <td>${IN.createdBy}</td>
+                    <td>${IN.internNote}</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+        <div class="alert alert-info text-center" role="alert" if.bind="data.length == 0">
+            Tidak ada data ditemukan.
+        </div>
+        <pagination if.bind="info.total>info.size" info.bind="info" change.delegate="changePage($event)" id="pager"></pagination>
+        <hr/>
+    </form>
+    
 </template>
